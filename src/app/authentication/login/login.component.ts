@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
     const myParams1 = {
       client_id: environment.client_id,
       response_type: environment.response_types_supported,
-      nonce: 'vcbfdg5647',
+      nonce: 'vcbfdg11478',
       redirect_uri: environment.redirect_uri,
       scope: environment.scopes_supported
     };
