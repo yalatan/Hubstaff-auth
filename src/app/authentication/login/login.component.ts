@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { environment } from '../../../environments/environment';
 
 @Component({
@@ -15,19 +15,25 @@ export class LoginComponent implements OnInit {
     const myParams1 = {
       client_id: environment.client_id,
       response_type: environment.response_types_supported,
-      nonce: 'vcbfdg11478',
+      nonce:
+        Math.random()
+          .toString(36)
+          .substring(2, 15) +
+        Math.random()
+          .toString(36)
+          .substring(2, 15),
       redirect_uri: environment.redirect_uri,
       scope: environment.scopes_supported
     };
 
-    this.path = environment.authorization_endpoint + '?' + Object.keys(myParams1)
-        .reduce(
-          (acc: URLSearchParams, curr: string) => {
+    this.path =
+      environment.authorization_endpoint +
+      '?' +
+      Object.keys(myParams1)
+        .reduce((acc: URLSearchParams, curr: string) => {
           acc.append(curr, myParams1[curr]);
           return acc;
-        }, new URLSearchParams()
-        )
+        }, new URLSearchParams())
         .toString();
   }
-
 }
